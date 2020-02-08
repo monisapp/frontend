@@ -1,0 +1,47 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "scripts": {
+    "relay": "reason-relay-compiler",
+    "relay:watch": "reason-relay-compiler --watch",
+    "bsb:watch": "bsb -make-world -w",
+    "bsb:clean": "bsb -clean-world",
+    "build": "parcel build index.html",
+    "start": "parcel index.html",
+    "server": "moduleserve ./ --port 8000",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "BuckleScript",
+    "ReasonReact",
+    "reason-react"
+  ],
+  "author": "",
+  "license": "MIT",
+  "resolutions": {
+    "react": "0.0.0-experimental-f6b8d31a7",
+    "react-dom": "0.0.0-experimental-f6b8d31a7"
+  },
+  "dependencies": {
+    "bs-fetch": "^0.5.1",
+    "graphql": "^14.6.0",
+    "react": "0.0.0-experimental-f6b8d31a7",
+    "react-dom": "0.0.0-experimental-f6b8d31a7",
+    "react-relay": "0.0.0-experimental-5f1cb628",
+    "reason-react": ">=0.7.0",
+    "reason-relay": "^0.5.3",
+    "relay-compiler": "8.0.0",
+    "relay-config": "8.0.0",
+    "relay-runtime": "8.0.0"
+  },
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^2.0.6",
+    "autoprefixer": "^9.7.4",
+    "bs-platform": "^7.0.1",
+    "bsb-js": "^1.1.7",
+    "moduleserve": "^0.9.0",
+    "parcel-bundler": "^1.12.4",
+    "postcss": "^7.0.26",
+    "tailwindcss": "^1.2.0"
+  }
+}

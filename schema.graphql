@@ -1,0 +1,45 @@
+schema {
+  query: RootQueryType
+  mutation: RootMutationType
+}
+
+type Account {
+  amount: Int!
+  currency: String!
+  icon: String
+  isActive: Boolean
+  name: String!
+  type: String!
+  user: User!
+}
+
+type Category {
+  icon: String!
+  name: String!
+  type: String!
+}
+
+type LoginResult {
+  token: String!
+  user: User!
+}
+
+type RootMutationType {
+  account(amount: Int, currency: String, icon: String, name: String!, type: String!): Account
+  login(email: String!, password: String!): LoginResult
+  register(email: String!, name: String!, password: String!, passwordConfirm: String!): LoginResult
+}
+
+type RootQueryType {
+  accounts: [Account!]
+  categories(type: String): [Category!]
+  user: User
+}
+
+type User {
+  email: String!
+  id: String!
+  isActive: Boolean
+  name: String
+}
+
