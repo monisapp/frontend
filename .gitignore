@@ -7,3 +7,4 @@ npm-debug.log
 /bundleOutput/
 /dist/
 .cache
+src/**/*.bs.js
