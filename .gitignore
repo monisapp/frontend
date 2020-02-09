@@ -8,3 +8,4 @@ npm-debug.log
 /dist/
 .cache
 src/**/*.bs.js
+src/__generated__/
