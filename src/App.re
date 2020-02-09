@@ -7,7 +7,15 @@ let make = () => {
     switch (url.path) {
     | ["signup"] => <Signup />
     | ["login"] => <Login />
-    | _ => <div> "Hello, world"->React.string </div>
+    | _ =>
+      <ReactExperimental.Suspense
+        fallback={
+          <div className="bg-indigo-100 h-screen w-screen flex">
+            <span className="m-auto"> "Loading..."->React.string </span>
+          </div>
+        }>
+        <Home />
+      </ReactExperimental.Suspense>
     }
   };
 };
