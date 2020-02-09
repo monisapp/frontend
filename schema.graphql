@@ -75,7 +75,7 @@ type RootQueryType {
     """The id of an object."""
     id: ID!
   ): Node
-  user: User
+  user: User!
 }
 
 type User implements Node {
@@ -83,7 +83,7 @@ type User implements Node {
 
   """The ID of an object"""
   id: ID!
-  isActive: Boolean
-  name: String
+  isActive: Boolean!
+  name: String!
 }
 
