@@ -251,6 +251,7 @@ module.exports = {
         '"Courier New"',
         'monospace',
       ],
+      mont: ['Montserrat']
     },
     fontSize: {
       xs: '0.75rem',
