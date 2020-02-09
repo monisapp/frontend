@@ -6,7 +6,8 @@ exception Graphql_error(string);
  * GraphQL server, and then decodes and returns the response.
  */
 let fetchQuery: ReasonRelay.Network.fetchFunctionPromise =
-  (operation, variables, _cacheConfig) =>
+  (operation, variables, _cacheConfig) => {
+    let token = Dom.Storage.getItem("monis-app-token", Dom.Storage.localStorage);
     Fetch.(
       fetchWithInit(
         "http://localhost:4000/graphql",
@@ -17,7 +18,7 @@ let fetchQuery: ReasonRelay.Network.fetchFunctionPromise =
             |> Js.Json.object_
             |> Js.Json.stringify
             |> BodyInit.make,
-          ~headers=HeadersInit.make({"content-type": "application/json", "accept": "application/json"}),
+          ~headers=HeadersInit.make({"content-type": "application/json", "accept": "application/json", "authorization": {j|Bearer $token|j}}),
           (),
         ),
       )
@@ -25,10 +26,12 @@ let fetchQuery: ReasonRelay.Network.fetchFunctionPromise =
            if (Response.ok(resp)) {
              Response.json(resp);
            } else {
+             Js.log(("error", resp))
              Js.Promise.reject(Graphql_error("Request failed: " ++ Response.statusText(resp)));
            }
          )
     );
+  }
 let network = ReasonRelay.Network.makePromiseBased(~fetchFunction=fetchQuery, ());
 let environment =
   ReasonRelay.Environment.make(
