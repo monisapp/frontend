@@ -3,20 +3,38 @@ schema {
   mutation: RootMutationType
 }
 
-type Account {
+type Account implements Node {
   amount: Int!
   currency: String!
   icon: String
+
+  """The ID of an object"""
+  id: ID!
   isActive: Boolean
   name: String!
   type: String!
   user: User!
 }
 
-type Category {
+type Category implements Node {
   icon: String!
+
+  """The ID of an object"""
+  id: ID!
   name: String!
   type: String!
+}
+
+input CreateAccountInput {
+  amount: Int
+  currency: String
+  icon: String
+  name: String!
+  type: String!
+}
+
+type CreateAccountPayload {
+  account: Account!
 }
 
 type LoginResult {
@@ -24,21 +42,47 @@ type LoginResult {
   user: User!
 }
 
+"""An object with an ID"""
+interface Node {
+  """The id of the object."""
+  id: ID!
+}
+
+input RegisterInput {
+  email: String!
+  name: String!
+  password: String!
+  passwordConfirm: String!
+}
+
+type RegisterPayload {
+  token: String!
+  user: User!
+}
+
 type RootMutationType {
-  account(amount: Int, currency: String, icon: String, name: String!, type: String!): Account
+  createAccount(input: CreateAccountInput!): CreateAccountPayload
   login(email: String!, password: String!): LoginResult
-  register(email: String!, name: String!, password: String!, passwordConfirm: String!): LoginResult
+  register(input: RegisterInput!): RegisterPayload
 }
 
 type RootQueryType {
   accounts: [Account!]
   categories(type: String): [Category!]
+
+  """Fetches an object given its ID"""
+  node(
+    """The id of an object."""
+    id: ID!
+  ): Node
   user: User
 }
 
-type User {
+type User implements Node {
   email: String!
-  id: String!
+
+  """The ID of an object"""
+  id: ID!
   isActive: Boolean
   name: String
 }
