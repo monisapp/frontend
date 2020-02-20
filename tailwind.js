@@ -140,12 +140,15 @@ module.exports = {
       12: '3rem',
       16: '4rem',
       20: '5rem',
+      22: '5.5rem',
       24: '6rem',
       32: '8rem',
       40: '10rem',
       48: '12rem',
       56: '14rem',
       64: '16rem',
+      72: '18rem',
+      80: '20rem',
     },
     backgroundColor: (theme) => theme('colors'),
     backgroundPosition: {
@@ -216,6 +219,7 @@ module.exports = {
     flexGrow: {
       0: '0',
       default: '1',
+      2: '2',
     },
     flexShrink: {
       0: '0',
