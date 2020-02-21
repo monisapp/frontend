@@ -1,6 +1,7 @@
 [@react.component]
 let make = () => {
   <div className="bg-indigo-100 min-h-screen">
+    <AddTransactionModal />
     <div className="container flex flex-col">
       <Navbar />
       <div>
