@@ -1,60 +1,124 @@
 [@react.component]
 let make = () => {
-  <div className="relative">
-    <div className="pt-4 z-50 relative">
-      <div className="absolute inset-0 mt-32">
-        <div className="container mt-4">
-          <form
-            className="ml-8 p-8 relative bg-white rounded"
-            style={ReactDOMRe.Style.make(~maxWidth="max-content", ())}
-            onSubmit={e => ReactEvent.Form.preventDefault(e)}>
-            <button
-              type_="button"
-              className="absolute top-0 right-0 p-1 rounded-full bg-gray-700 hover:bg-gray-800 transform translate-x-1/2 -translate-y-1/2">
-              <CrossIcon className="w-4 h-4 fill-current text-white" />
-            </button>
-            <div className="flex flex-col -mx-6">
-              <div className="flex flex-wrap">
-                <label htmlFor="account" className="flex flex-col px-3">
-                  <span className="text-xs font-light text-gray-600 uppercase"> "Conta"->React.string </span>
-                  <input
-                    type_="text"
-                    name="account"
-                    id="account"
-                    className="py-2 pl-8 pr-4 w-48 h-10 rounded border"
-                  />
-                </label>
-                <label htmlFor="account" className="flex flex-col px-3">
-                  <span className="text-xs font-light text-gray-600 uppercase"> "Emitente"->React.string </span>
-                  <input type_="text" name="account" id="account" className="py-2 px-3 w-48 h-10 rounded border" />
-                </label>
-                <label htmlFor="category" className="flex flex-col px-3">
-                  <span className="text-xs font-light text-gray-600 uppercase"> "Categoria"->React.string </span>
-                  <input type_="text" name="category" id="category" className="py-2 px-3 w-48 h-10 rounded border" />
-                </label>
-                <label htmlFor="value" className="flex flex-col px-3">
-                  <span className="text-xs font-light text-gray-600 uppercase"> "Valor"->React.string </span>
-                  <input type_="number" name="value" id="value" className="py-2 px-3 w-48 h-10 rounded border" />
-                </label>
+  <div
+    className="fixed bottom-0 inset-x-0 px-4 pb-4 sm:inset-0 sm:flex sm:items-center sm:justify-center">
+    <div className="fixed inset-0">
+      <div className="absolute inset-0 bg-gray-500 opacity-75" />
+    </div>
+    <div
+      className="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full">
+      <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+        <div className="sm:flex sm:items-start">
+          <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+            <h3 className="text-lg leading-6 font-medium text-gray-900">
+              "Add transaction"->React.string
+            </h3>
+            <div className="mt-2 flex flex-col">
+              <div className="flex flex-col sm:flex-row -mx-2">
+                <div className="flex flex-col px-2">
+                  <div>
+                    <label
+                      htmlFor="account"
+                      className="block text-sm leading-5 font-medium text-left text-gray-700">
+                      "Account"->React.string
+                    </label>
+                    <div className="mt-1 relative rounded-md shadow-sm">
+                      <input
+                        id="account"
+                        className="form-input block w-full sm:text-sm sm:leading-5"
+                        placeholder="Nubank Credit Card"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="payee"
+                      className="block text-sm leading-5 font-medium text-left text-gray-700">
+                      "Payee"->React.string
+                    </label>
+                    <div className="mt-1 relative rounded-md shadow-sm">
+                      <input
+                        id="payee"
+                        className="form-input block w-full sm:text-sm sm:leading-5"
+                        placeholder="7Eleven"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="flex flex-col px-2">
+                  <div>
+                    <label
+                      htmlFor="value"
+                      className="block text-sm leading-5 font-medium text-left text-gray-700">
+                      "Value"->React.string
+                    </label>
+                    <div className="mt-1 relative rounded-md shadow-sm">
+                      <div
+                        className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <span
+                          className="text-gray-500 sm:text-sm sm:leading-5">
+                          "$"->React.string
+                        </span>
+                      </div>
+                      <input
+                        id="value"
+                        className="form-input block w-full pl-7 sm:text-sm sm:leading-5"
+                        placeholder="1.99"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="category"
+                      className="block text-sm leading-5 font-medium text-left text-gray-700">
+                      "Category"->React.string
+                    </label>
+                    <div className="mt-1 relative rounded-md shadow-sm">
+                      <input
+                        id="category"
+                        className="form-input block w-full sm:text-sm sm:leading-5"
+                        placeholder="Groceries"
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="flex flex-wrap">
-                <label htmlFor="date" className="flex flex-col px-3">
-                  <span className="text-xs font-light text-gray-600 uppercase"> "Data"->React.string </span>
-                  <input type_="text" name="date" id="date" className="py-2 px-3 w-48 h-10 h-10 rounded border" />
+              <div>
+                <label
+                  htmlFor="comment"
+                  className="block text-sm leading-5 font-medium text-left text-gray-700">
+                  "Note"->React.string
                 </label>
-                <label htmlFor="comment" className="flex flex-col px-3">
-                  <span className="text-xs font-light text-gray-600 uppercase"> {j|Comentário|j}->React.string </span>
-                  <input type_="text" name="comment" id="comment" className="py-2 px-3 w-64 h-10 rounded border" />
-                </label>
-                <button className="rounded w-48 h-10 ml-auto mr-3 self-end font-medium bg-green-600 shadow-lg text-white">
-                  {j|Salvar Transação|j}->React.string
-                </button>
+                <div className="mt-1 relative rounded-md shadow-sm">
+                  <input
+                    id="comment"
+                    className="form-input block w-full sm:text-sm sm:leading-5"
+                    placeholder="Dinner ingredients"
+                  />
+                </div>
               </div>
             </div>
-          </form>
+          </div>
         </div>
       </div>
+      <div
+        className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+        <span className="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
+          <button
+            type_="button"
+            className="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-green-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-500 focus:outline-none focus:border-green-700 focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5">
+            "Confirm"->React.string
+          </button>
+        </span>
+        <span
+          className="mt-3 flex w-full rounded-md shadow-sm sm:mt-0 sm:w-auto">
+          <button
+            type_="button"
+            className="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-base leading-6 font-medium text-gray-700 shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline transition ease-in-out duration-150 sm:text-sm sm:leading-5">
+            "Cancel"->React.string
+          </button>
+        </span>
+      </div>
     </div>
-    <div className="fixed opacity-25 transition-opacity duration-300 inset-0 bg-black z-40 w-screen" />
   </div>;
 };
