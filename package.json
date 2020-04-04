@@ -36,6 +36,7 @@
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^2.0.6",
+    "@tailwindcss/custom-forms": "^0.2.1",
     "autoprefixer": "^9.7.4",
     "bs-platform": "^7.0.1",
     "bsb-js": "^1.1.7",
