@@ -50,27 +50,7 @@ let make = () => {
                   </div>
                 </div>
                 <div className="flex flex-col px-2">
-                  <div>
-                    <label
-                      htmlFor="value"
-                      className="block text-sm leading-5 font-medium text-left text-gray-700">
-                      "Value"->React.string
-                    </label>
-                    <div className="mt-1 relative rounded-md shadow-sm">
-                      <div
-                        className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <span
-                          className="text-gray-500 sm:text-sm sm:leading-5">
-                          "$"->React.string
-                        </span>
-                      </div>
-                      <input
-                        id="value"
-                        className="form-input block w-full pl-7 sm:text-sm sm:leading-5"
-                        placeholder="1.99"
-                      />
-                    </div>
-                  </div>
+                  <ValueInput />
                   <div>
                     <label
                       htmlFor="category"
