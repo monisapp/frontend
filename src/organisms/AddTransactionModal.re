@@ -1,5 +1,16 @@
+module Query = [%relay.query {|
+  query AddTransactionModalQuery {
+    accounts {
+      id
+      name
+    }
+  }
+|}];
+
 [@react.component]
 let make = () => {
+  let modalData = Query.use(~variables=(), ());
+
   <div
     className="fixed bottom-0 inset-x-0 px-4 pb-4 sm:inset-0 sm:flex sm:items-center sm:justify-center">
     <div className="fixed inset-0">
@@ -23,11 +34,7 @@ let make = () => {
                       "Account"->React.string
                     </label>
                     <div className="mt-1 relative rounded-md shadow-sm">
-                      <input
-                        id="account"
-                        className="form-input block w-full sm:text-sm sm:leading-5"
-                        placeholder="Nubank Credit Card"
-                      />
+                      <AccountsDropdown accounts={modalData.accounts} />
                     </div>
                   </div>
                   <div>
