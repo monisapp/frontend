@@ -13,8 +13,8 @@ module Fragment = [%relay.fragment
 let make = (~accounts as accountsRef) => {
   let accountsData = Fragment.use(accountsRef);
 
-  <select className="form-select block w-full sm:text-sm sm:leading-5">
-    <option disabled=true selected=true className="text-gray-500">
+  <select className="form-select block w-full sm:text-sm sm:leading-5" defaultValue="default">
+    <option disabled=true value="default" className="text-gray-500">
       "Choose an account"->React.string
     </option>
     {Array.map(
