@@ -1,9 +1,6 @@
 module Query = [%relay.query {|
   query AddTransactionModalQuery {
-    accounts {
-      id
-      name
-    }
+    ...AccountsDropdown_accounts
   }
 |}];
 
@@ -34,7 +31,7 @@ let make = () => {
                       "Account"->React.string
                     </label>
                     <div className="mt-1 relative rounded-md shadow-sm">
-                      <AccountsDropdown accounts={modalData.accounts} />
+                      <AccountsDropdown accounts={modalData.getFragmentRefs()} />
                     </div>
                   </div>
                   <div>
