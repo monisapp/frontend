@@ -37,6 +37,19 @@ type CreateAccountPayload {
   account: Account!
 }
 
+input CreateTransactionInput {
+  accountId: ID!
+  categoryId: ID!
+  comment: String
+  payee: String!
+  transactionDate: String!
+  value: Int!
+}
+
+type CreateTransactionPayload {
+  transaction: Transaction!
+}
+
 type LoginResult {
   token: String!
   user: User!
@@ -62,12 +75,13 @@ type RegisterPayload {
 
 type RootMutationType {
   createAccount(input: CreateAccountInput!): CreateAccountPayload
+  createTransaction(input: CreateTransactionInput!): CreateTransactionPayload
   login(email: String!, password: String!): LoginResult
   register(input: RegisterInput!): RegisterPayload
 }
 
 type RootQueryType {
-  accounts: [Account!]
+  accounts: [Account!]!
   categories(type: String): [Category!]
 
   """Fetches an object given its ID"""
@@ -75,7 +89,20 @@ type RootQueryType {
     """The id of an object."""
     id: ID!
   ): Node
+  transactions(accountId: ID, categoryId: ID, id: ID): [Transaction!]!
   user: User!
+}
+
+type Transaction implements Node {
+  account: Account!
+  category: Category!
+  comment: String
+
+  """The ID of an object"""
+  id: ID!
+  payee: String!
+  transactionDate: String!
+  value: Int!
 }
 
 type User implements Node {
