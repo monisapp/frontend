@@ -1,10 +1,12 @@
-module Query = [%relay.query {|
+module Query = [%relay.query
+  {|
   query NavbarQuery {
     user {
       ...UserDropdown_user
     }
   }
-|}];
+|}
+];
 
 [@react.component]
 let make = () => {
@@ -16,7 +18,10 @@ let make = () => {
         <span className="mx-1"> "Budget Name"->React.string </span>
         <ChevronIcon className="w-6 h-6" />
       </button>
-      <UserDropdown user={homeData.user.getFragmentRefs()} className="ml-auto" />
+      <UserDropdown
+        user={homeData.user.getFragmentRefs()}
+        className="ml-auto"
+      />
     </div>
   </div>;
 };

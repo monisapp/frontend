@@ -11,7 +11,7 @@ mutation SignupMutation($input: RegisterInput!) {
 |}
 ];
 
-let execute = (~name, ~email, ~password, ~passwordConfirm) => {
+let execute = (~name, ~email, ~password, ~passwordConfirm) =>
   Mutation.commitMutation(
     ~environment=RelayEnv.environment,
     ~variables={
@@ -24,4 +24,3 @@ let execute = (~name, ~email, ~password, ~passwordConfirm) => {
     },
     (),
   );
-};

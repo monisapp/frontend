@@ -1,5 +1,5 @@
 [@react.component]
-let make = (~id, ~className="", ~checked, ~onChange) => {
+let make = (~id, ~className="", ~checked, ~onChange) =>
   <label
     htmlFor=id className={"flex items-center cursor-pointer " ++ className}>
     <div className="relative">
@@ -9,8 +9,11 @@ let make = (~id, ~className="", ~checked, ~onChange) => {
       />
       <div
         className="toggle__dot transform transition-transform ease-in duration-200 absolute w-6 h-6 sm:w-4 sm:h-4 bg-white rounded shadow inset-y-0 left-0 m-1 flex">
-        {checked ? <PlusIcon className="w-full h-full" /> : <MinusIcon className="w-full h-full" />}
+        {
+          checked ?
+            <PlusIcon className="w-full h-full" /> :
+            <MinusIcon className="w-full h-full" />
+        }
       </div>
     </div>
   </label>;
-};

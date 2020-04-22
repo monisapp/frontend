@@ -8,6 +8,9 @@ mutation LoginMutation($email: String!, $password: String!) {
 |}
 ];
 
-let execute = (~email, ~password) => {
-  Mutation.commitMutation(~environment=RelayEnv.environment, ~variables={email, password}, ());
-};
+let execute = (~email, ~password) =>
+  Mutation.commitMutation(
+    ~environment=RelayEnv.environment,
+    ~variables={email, password},
+    (),
+  );
