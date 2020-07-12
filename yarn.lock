@@ -1351,6 +1351,11 @@ bsb-js@^1.1.7:
   resolved "https://registry.yarnpkg.com/bsb-js/-/bsb-js-1.1.7.tgz#12cc91e974f5896b3a2aa8358419d24e56f552c3"
   integrity sha512-FSR7d5Kb6KfVI5sLz9bEeD9pbA9F4Zbkk1xa6R9CJtyd+dJ7mIkxoXqv7cw7HWcuee+VpIhmjYzrplnFd/5Qgg==
 
+bsb@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/bsb/-/bsb-0.0.1.tgz#577d3a99afe5f32bcc6786745c333e12338b1b3a"
+  integrity sha512-4hNelV/LquIcrCjsHnD1jocmz14++UnmUgFh/56iySwvaIQxBT/1Orh8FGlXfx0hSEHeWXkCRJiajRmAEVm2IA==
+
 bser@2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/bser/-/bser-2.1.1.tgz#e6787da20ece9d07998533cfd9de6f5c38f4bc05"

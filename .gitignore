@@ -7,5 +7,5 @@ npm-debug.log
 /bundleOutput/
 /dist/
 .cache
-src/**/*.bs.js
+*.bs.js
 src/__generated__/
