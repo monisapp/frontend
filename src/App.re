@@ -1,12 +1,12 @@
 [@react.component]
 let make = () => {
   let url = ReasonReactRouter.useUrl();
-  switch (Dom.Storage.getItem("monis-app-token", Dom.Storage.localStorage)) {
-  | None => <Login />
+  switch (url.path) {
+  | ["signup"] => <Signup />
+  | ["login"] => <Login />
   | _ =>
-    switch (url.path) {
-    | ["signup"] => <Signup />
-    | ["login"] => <Login />
+    switch (Dom.Storage.getItem("monis-app-token", Dom.Storage.localStorage)) {
+    | None => <Signup />
     | _ =>
       <ReactExperimental.Suspense
         fallback={

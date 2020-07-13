@@ -139,6 +139,14 @@ let make = () => {
         }>
         "CADASTRE-SE"->React.string
       </button>
+      <span
+        className="sm:text-sm text-sm cursor-pointer"
+        onClick={
+          _ => {
+            ReasonReactRouter.push("/login")
+          }
+        }
+      > "Already have an account?"->React.string </span>
     </form>
   </div>;
 };

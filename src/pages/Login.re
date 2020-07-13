@@ -1,4 +1,5 @@
 type state = {
+          </div>
   email: string,
   password: string,
   error: string,
@@ -94,6 +95,14 @@ let make = () => {
         }>
         "ENTRAR"->React.string
       </button>
+      <span
+        className="sm:text-sm text-sm cursor-pointer"
+        onClick={
+          _ => {
+            ReasonReactRouter.push("/signup")
+          }
+        }
+      > "Need an account?"->React.string </span>
     </form>
   </div>;
 };

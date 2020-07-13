@@ -1,5 +1,5 @@
 [@react.component]
-let make = () => {
+let make = (~onChange=?) => {
   let (toggled, setToggled) = React.useState(() => false);
   <div>
     <label
@@ -23,7 +23,13 @@ let make = () => {
         id="value_toggle"
         className="absolute right-0 inset-y-0 justify-center mr-2 sm:text-sm"
         checked=toggled
-        onChange={_ => setToggled(toggle => !toggle)}
+        onChange={_ => {
+          setToggled(toggle => !toggle);
+          switch(onChange) {
+          | Some(onChange) => onChange(toggled)
+          | None => ()
+          };
+        }}
       />
     </div>
   </div>;
