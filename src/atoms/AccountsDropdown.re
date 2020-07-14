@@ -12,18 +12,7 @@ module Fragment = [%relay.fragment
 [@react.component]
 let make = (~accounts as accountsRef) => {
   let accountsData = Fragment.use(accountsRef);
+  let elements=accountsData.accounts;
 
-  <select
-    className="form-select block w-full sm:text-sm sm:leading-5"
-    defaultValue="default">
-    <option disabled=true value="default" className="text-gray-500">
-      "Choose an account"->React.string
-    </option>
-    {Array.map(
-      (account: Fragment.Types.accounts) =>
-        <option key={account.id}> account.name->React.string </option>,
-      accountsData.accounts,
-    )
-    ->React.array}
-  </select>;
+  <Dropdown elements={ elements |> Array.map( (element : Fragment.Operation.Types.accounts) => element.name ) } color="gray" />;
 };

@@ -18,7 +18,8 @@
   "bs-dependencies": [
     "reason-react",
     "reason-relay",
-    "bs-fetch"
+    "bs-fetch",
+    "bs-webapi"
   ],
   "refmt": 3
 }

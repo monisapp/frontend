@@ -1,5 +1,4 @@
 type state = {
-          </div>
   email: string,
   password: string,
   error: string,

@@ -10,13 +10,15 @@ module Query = [%relay.query
 let make = (~cancelAction, ~confirmAction) => {
   let modalData = Query.use(~variables=(), ());
   let (actionType, setActionType) = React.useState(() => "expense");
+  let modalRef = ClickOutside.useClickOutside(cancelAction);
   <div
     className="fixed bottom-0 inset-x-0 px-4 pb-4 sm:inset-0 sm:flex sm:items-center sm:justify-center">
-    <div className="fixed inset-0" onClick=cancelAction>
+    <div className="fixed inset-0">
       <div className="absolute inset-0 bg-gray-500 opacity-75" />
     </div>
     <div
-      className="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full">
+      ref={ReactDOMRe.Ref.domRef(modalRef)}
+      className="bg-white rounded-lg overflow-y-visible shadow-xl transform transition-all sm:max-w-lg sm:w-full">
       <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
         <div className="sm:flex sm:items-start">
       <ReactExperimental.Suspense

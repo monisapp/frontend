@@ -3,51 +3,18 @@ schema {
   mutation: RootMutationType
 }
 
-type Account implements Node {
-  amount: Int!
-  currency: String!
-  icon: String
-
-  """The ID of an object"""
-  id: ID!
-  isActive: Boolean
-  name: String!
-  type: String!
+type RegisterPayload {
+  token: String!
   user: User!
 }
 
-type Category implements Node {
-  icon: String!
-
-  """The ID of an object"""
-  id: ID!
-  name: String!
-  type: String!
-}
-
-input CreateAccountInput {
-  amount: Int
-  currency: String
-  icon: String
-  name: String!
-  type: String!
-}
-
-type CreateAccountPayload {
-  account: Account!
-}
-
 input CreateTransactionInput {
-  accountId: ID!
-  categoryId: ID!
-  comment: String
   payee: String!
-  transactionDate: String!
   value: Int!
-}
-
-type CreateTransactionPayload {
-  transaction: Transaction!
+  transactionDate: String!
+  categoryId: ID!
+  accountId: ID!
+  comment: String
 }
 
 type LoginResult {
@@ -55,62 +22,106 @@ type LoginResult {
   user: User!
 }
 
-"""An object with an ID"""
-interface Node {
-  """The id of the object."""
+type CreateAccountPayload {
+  account: Account!
+}
+
+type Account {
+  "The ID of an object"
   id: ID!
-}
 
-input RegisterInput {
-  email: String!
+  amount: Int!
+
+  currency: String!
+
+  icon: String
+
+  isActive: Boolean
+
   name: String!
-  password: String!
-  passwordConfirm: String!
-}
 
-type RegisterPayload {
-  token: String!
+  type: String!
+
   user: User!
 }
 
+interface Node {
+  "The id of the object."
+  id: ID!
+}
+
+type CreateTransactionPayload {
+  transaction: Transaction!
+}
+
+input CreateAccountInput {
+  name: String!
+  type: String!
+  icon: String
+  currency: String
+  amount: Int
+}
+
 type RootMutationType {
-  createAccount(input: CreateAccountInput!): CreateAccountPayload
-  createTransaction(input: CreateTransactionInput!): CreateTransactionPayload
   login(email: String!, password: String!): LoginResult
   register(input: RegisterInput!): RegisterPayload
+  createAccount(input: CreateAccountInput!): CreateAccountPayload
+  createTransaction(input: CreateTransactionInput!): CreateTransactionPayload
 }
 
 type RootQueryType {
-  accounts: [Account!]!
-  categories(type: String): [Category!]
-
-  """Fetches an object given its ID"""
   node(
-    """The id of an object."""
+    "The id of an object."
     id: ID!
   ): Node
   transactions(accountId: ID, categoryId: ID, id: ID): [Transaction!]!
   user: User!
+  accounts: [Account!]!
+  categories(type: String): [Category!]
 }
 
-type Transaction implements Node {
-  account: Account!
-  category: Category!
+type Transaction {
+  "The ID of an object"
+  id: ID!
+
+  payee: String!
+
+  value: Int!
+
+  transactionDate: String!
+
   comment: String
 
-  """The ID of an object"""
-  id: ID!
-  payee: String!
-  transactionDate: String!
-  value: Int!
+  account: Account!
+
+  category: Category!
 }
 
-type User implements Node {
-  email: String!
-
-  """The ID of an object"""
+type Category {
+  "The ID of an object"
   id: ID!
-  isActive: Boolean!
+
+  name: String!
+
+  icon: String!
+
+  type: String!
+}
+
+input RegisterInput {
+  email: String!
+  password: String!
+  passwordConfirm: String!
   name: String!
 }
 
+type User {
+  "The ID of an object"
+  id: ID!
+
+  email: String!
+
+  isActive: Boolean!
+
+  name: String!
+}
