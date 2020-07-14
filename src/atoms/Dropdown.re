@@ -12,7 +12,7 @@ let make = (
   ~border : bool = true
 ) => {
   let (isOpen, onOpen) = React.useState(() => false);
-  let (selected, onSelected) = React.useState(() => -1);
+  let (selected : option(int), onSelected) = React.useState(() => None);
   let toggle = _event => onOpen(current => !current);
 
   let handleClickOutside = _ => {
@@ -25,7 +25,7 @@ let make = (
   <div className="w-full" ref={ReactDOMRe.Ref.domRef(dropdownRef)}> // Container
     <div className=(borderClass ++ "border-" ++ color ++ "-400 hover:border-" ++ color ++ "-500 rounded leading-tight focus:outline-none focus:shadow-outline cursor-pointer p-2 w-full") onClick=toggle> // Header
       <div className="flex justify-between select-none">
-        (selected == -1 ? placeholder : elements[selected])->React.string
+        (switch(selected) { | None => placeholder | Some(selected) => elements[selected]})->React.string
         <ChevronIcon className=("w-5 text-" ++ color ++ "-500 transition-transform duration-200 transform" ++ (isOpen ? " rotate-180" : "")) />
       </div>
     </div> // Header
@@ -45,7 +45,7 @@ let make = (
               <li
                 onClick={
                   _e => {
-                    onSelected(_ => i);
+                    onSelected(_ => Some(i));
                     onOpen(_ => false);
                   }
                 }
