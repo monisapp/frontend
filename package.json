@@ -39,7 +39,7 @@
     "@fullhuman/postcss-purgecss": "^2.0.6",
     "@tailwindcss/custom-forms": "^0.2.1",
     "autoprefixer": "^9.7.4",
-    "bs-platform": "^8.0.3",
+    "bs-platform": "^7.2.3",
     "bsb-js": "^1.1.7",
     "moduleserve": "^0.9.0",
     "parcel-bundler": "^1.12.4",

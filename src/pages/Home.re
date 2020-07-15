@@ -10,7 +10,7 @@ let make = () => {
         | true =>
             <AddTransactionModal
               cancelAction={
-                _ => showAddTransaction(_ => false)
+                () => showAddTransaction(_ => false)
               }
               confirmAction={
                 _ => showAddTransaction(_ => false)
