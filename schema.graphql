@@ -10,7 +10,7 @@ type RegisterPayload {
 
 input CreateTransactionInput {
   payee: String!
-  value: Int!
+  value: String!
   transactionDate: String!
   categoryId: ID!
   accountId: ID!
@@ -30,7 +30,7 @@ type Account {
   "The ID of an object"
   id: ID!
 
-  amount: Int!
+  amount: String!
 
   currency: String!
 
@@ -50,6 +50,10 @@ interface Node {
   id: ID!
 }
 
+type DeleteAccountPayload {
+  account: Account!
+}
+
 type CreateTransactionPayload {
   transaction: Transaction!
 }
@@ -59,13 +63,18 @@ input CreateAccountInput {
   type: String!
   icon: String
   currency: String
-  amount: Int
+  amount: String
+}
+
+input DeleteAccountInput {
+  id: String!
 }
 
 type RootMutationType {
   login(email: String!, password: String!): LoginResult
   register(input: RegisterInput!): RegisterPayload
   createAccount(input: CreateAccountInput!): CreateAccountPayload
+  deleteAccount(input: DeleteAccountInput!): DeleteAccountPayload
   createTransaction(input: CreateTransactionInput!): CreateTransactionPayload
 }
 
@@ -86,7 +95,7 @@ type Transaction {
 
   payee: String!
 
-  value: Int!
+  value: String!
 
   transactionDate: String!
 

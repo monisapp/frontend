@@ -12,7 +12,8 @@ module Fragment = [%relay.fragment
 [@react.component]
 let make = (~accounts as accountsRef) => {
   let accountsData = Fragment.use(accountsRef);
-  let elements=accountsData.accounts;
+  let elements=accountsData.accounts
+    |> Array.map((element : Fragment.Operation.Types.accounts) => element.name);
 
-  <Dropdown elements={ elements |> Array.map( (element : Fragment.Operation.Types.accounts) => element.name ) } color="gray" />;
+  <Dropdown elements=elements color="gray" />;
 };

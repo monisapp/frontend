@@ -41,6 +41,7 @@
     "autoprefixer": "^9.7.4",
     "bs-platform": "^7.2.3",
     "bsb-js": "^1.1.7",
+    "fb-watchman": "^2.0.1",
     "moduleserve": "^0.9.0",
     "parcel-bundler": "^1.12.4",
     "postcss": "^7.0.26",

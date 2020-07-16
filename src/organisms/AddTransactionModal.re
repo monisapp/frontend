@@ -7,10 +7,10 @@ module Query = [%relay.query
 ];
 
 [@react.component]
-let make = (~cancelAction, ~confirmAction) => {
+let make = (~performAction: Actions.performAction) => {
   let modalData = Query.use(~variables=(), ());
   let (actionType, setActionType) = React.useState(() => "expense");
-  let modalRef = ClickOutside.useClickOutside(_ => cancelAction());
+  let modalRef = ClickOutside.useClickOutside(_ => performAction(Actions.SetTransactionModal(false)));
   <div
     className="fixed bottom-0 inset-x-0 px-4 pb-4 sm:inset-0 sm:flex sm:items-center sm:justify-center">
     <div className="fixed inset-0">
@@ -107,7 +107,7 @@ let make = (~cancelAction, ~confirmAction) => {
         <span className="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
           <button
             type_="button"
-            onClick=confirmAction
+            onClick={ _ => performAction(Actions.SetTransactionModal(false))}
             className="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-green-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-500 focus:outline-none focus:border-green-700 focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5">
             "Confirm"->React.string
           </button>
@@ -116,7 +116,7 @@ let make = (~cancelAction, ~confirmAction) => {
           className="mt-3 flex w-full rounded-md shadow-sm sm:mt-0 sm:w-auto">
           <button
             type_="button"
-            onClick={_ => cancelAction()}
+            onClick={ _ => performAction(Actions.SetTransactionModal(false))}
             className="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-base leading-6 font-medium text-gray-700 shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline transition ease-in-out duration-150 sm:text-sm sm:leading-5">
             "Cancel"->React.string
           </button>
